@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel = "stylesheet" href = "styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-.......(the integrity hash)......." crossorigin="anonymous">
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200&family=Open+Sans:wght@300;400&family=Playfair+Display&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bitter&family=Montserrat:wght@100;200&family=Open+Sans:wght@300;400&family=Playfair+Display&display=swap" rel="stylesheet">
+    <title>Just Read The News</title>
+</head>
+<body>
+    
+    <!-- I want to make a news aggregate application. I know one thing that drives me up 
+    a wall is how much of what I hear about the world is via social media, which is notoriously
+    infected with misinformation about current and past events. I want to make an app that serves
+    my needs and makes finding news articles much less of a pain than opening a web browser like google
+    that mixes in punditry and videos and twitter posts with actual reporting and I have to sift through that-->
+
+
+    <!-- After speaking to a member of my mentorship program, I'm looking at a way to display the performance of the 
+    web app I'm making as part of an "Advanced Mode" to show the endpoint, size of the data, and the time of the request -->
+
+
+    <section class = "top"> 
+        <!----------------------------------- Heading/Title of Project ----------------------------------------->
+        <div class = "title">
+            <h1 class = "read">Read It</h1>
+        </div>
+        <!------------------------------------  Search Bar for articles ------------------------------------------>
+        <article class = "bar-contianer">
+            <form id = "searchForm">
+                <div class = "search-wrapper">
+                    <input id = "bar" type = "text" placeholder = "Search Articles...">
+                <button id = "search-btn" type = "submit">
+                    <i id = "magnifyingGlass" class="fas fa-search"></i>
+                </button>  
+                </div>
+            </form>
+
+        <!----------------------------PERFORMANCE/BASIC TOGGLE---------------------------------------------------------------------->
+            <div class = "toggle-container">
+                <button class = "advanced">Performance</button>
+            </div> 
+        </article>
+
+    </section>
+
+    <!-----------------------------------------ARTICLE RESULTS--------------------------------------------------------------------->
+
+    <section class = "display">
+
+        <article class = "results">
+
+            
+        </article>
+    </section>
+</body>
+
+<script src ="news.js"></script>
+</html>
