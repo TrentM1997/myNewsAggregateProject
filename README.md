@@ -12,7 +12,7 @@ facts yourself. But I'm a person and I'm subject to my environment just as much 
 social media regurgitations about a story paint my views on a topic. So what better way to be invested in making that change than to forge a tool to tackle the problem myself? 
 
 TECH --> Languages: HTML5, CSS3 and JavaScript 
-         News API: https://newsapi.org/docs/get-started
+       ||  API: News API https://newsapi.org
 
 Challenges --> Initially My biggest challenges were simply how I iterate through the the fetch results. Initially I only knew how to display the first results of a fetch request
 by using innerHTML to display the [0] index of the data array that returns upon making the API call. I wasn't sure how to display a multitude of articles without having a page full of 
