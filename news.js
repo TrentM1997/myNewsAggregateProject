@@ -2,7 +2,7 @@
 const apiKey = "f73e5e85e64145d3868ca9128f797d3a";
 const suggestUrl = "https://newsapi.org/v2/top-headlines?country=us&apiKey=f73e5e85e64145d3868ca9128f797d3a";
 const resultsContainer = document.querySelector('.results');
-//SUGGEST ARTICLES UPON LOADING THE PAGE
+//SUGGEST ARTICLES ON LOADING THE PAGE
 document.addEventListener("DOMContentLoaded", function () {
     fetchSuggestions(resultsContainer);
 
@@ -10,38 +10,39 @@ document.addEventListener("DOMContentLoaded", function () {
 
 function fetchSuggestions() {
     fetch(suggestUrl)
-    .then(response =>response.json())
-    .then(data => {
+        .then(response => response.json())
+        .then(data => {
+            const maxSuggestions = 15;
 
-        const maxSuggestions = 20;
-        let suggestionsShown = 0;//counter variable
 
-        console.log(data);
+            if (data.articles && data.articles.length > 0) {
+                const validArticles = data.articles
+                    .filter(article =>article.title !== null && article.title !== "[Removed]")
+                    .slice(0, maxSuggestions);
 
-        if(data.articles && data.articles.length > 0) {
-            data.articles.forEach(article => { // accessing the data.articles array here from the JSON response I no longer need to access them in my innerHTML
-                if (suggestionsShown < maxSuggestions) {
+                console.log(validArticles.length);
 
+                validArticles.forEach(article => {
                     const card = document.createElement('div');
-                    card.classList.add('article-card')
-                    card.innerHTML= `
-                        <img src = "${article.urlToImage}">
-                        <a href = "${article.url}" target= "_blank"><h2>${article.title}</h2></a><br>
-                        <p>${article.description}</p>`; //here we can just use the individual article variable from the forEach loop and print from there
-                        resultsContainer.appendChild(card);
-                        suggestionsShown++;
-                } else {
+                    card.classList.add('article-card');
+                    card.innerHTML = `
+                        <img src="${article.urlToImage}">
+                        <a href="${article.url}" target="_blank"><h2>${article.title}</h2></a><br>
+                        <p>${article.description}</p>`;
 
-                    return;//break the loop once the max number of articles is exceeded
+                   // console.log(`${article.title}`);
+                    resultsContainer.appendChild(card);
+                });
+
+                if (validArticles.length === 0) {
+                    console.log("No valid articles found");
                 }
-            })
-           
-        } else {
-            console.log("No articles Found");
-        }
-       
-    })
+            } else {
+                console.log("No articles found");
+            }
+        });
 }
+
 
 //SEARCH FOR ARTICLES
 console.log('Adding event listener');
@@ -66,7 +67,11 @@ document.getElementById('searchForm').addEventListener('submit', function(event)
         const maxArticles = 20;//defining the max articles allowed
 
         if(data.articles && data.articles.length > 0) {
-            data.articles.forEach(article => { // accessing the data.articles array here from the JSON response I no longer need to access them in my innerHTML
+
+            const validFound = data.articles.filter(article => article.title !== "[Removed]");
+
+            validFound.forEach(article => { // accessing the data.articles array here from the JSON response I no longer need to access them in my innerHTML
+
                 if (articlesShown < maxArticles) {
 
                     const card = document.createElement('div');
