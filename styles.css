@@ -134,6 +134,7 @@ background-color: white;
     height: auto;
     object-fit: cover;
     text-align: center;
+    cursor: pointer;
 }
 
 
@@ -150,6 +151,7 @@ background-color: white;
     font-size: 15px;
     width: 95%;
     margin: 0 auto;
+    opacity: 0.;
 }
 
 .article-card a:link,
@@ -165,4 +167,8 @@ background-color: white;
     color:#445c6d;
 }
 
+/* Performance Window */
 
+.hidden {
+    display: none;
+}

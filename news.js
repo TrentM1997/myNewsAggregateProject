@@ -8,11 +8,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
 });
 
+
+
 function fetchSuggestions() {
     fetch(suggestUrl)
-        .then(response => response.json())
+        .then(response => response.json()) //Looking to record my response size as part of the "Performance" Mode of the app
         .then(data => {
             const maxSuggestions = 15;
+
+            
 
 
             if (data.articles && data.articles.length > 0) {
@@ -22,14 +26,26 @@ function fetchSuggestions() {
 
                 console.log(validArticles.length);
 
+               
+               
+
                 validArticles.forEach(article => {
                     const card = document.createElement('div');
                     card.classList.add('article-card');
-                    card.innerHTML = `
+                    
+                    if(article.urlToImage !== null) {
+                    card.innerHTML = 
+                    `
                         <img src="${article.urlToImage}">
                         <a href="${article.url}" target="_blank"><h2>${article.title}</h2></a><br>
                         <p>${article.description}</p>`;
+                    } else {
+                    card.innerHTML = `
+                    <img src="images/fallback.jpg">
+                        <a href="${article.url}" target="_blank"><h2>${article.title}</h2></a><br>
+                        <p>${article.description}</p>`;
 
+                    }
                    // console.log(`${article.title}`);
                     resultsContainer.appendChild(card);
                 });
@@ -43,9 +59,7 @@ function fetchSuggestions() {
         });
 }
 
-
 //SEARCH FOR ARTICLES
-console.log('Adding event listener');
 document.getElementById('searchForm').addEventListener('submit', function(event) {
 
     event.preventDefault();
@@ -76,10 +90,21 @@ document.getElementById('searchForm').addEventListener('submit', function(event)
 
                     const card = document.createElement('div');
                     card.classList.add('article-card')
-                    card.innerHTML= `
-                        <img src = "${article.urlToImage}">
-                        <a href = "${article.url}" target= "_blank"><h2>${article.title}</h2></a><br>
-                        <p>${article.description}</p>`; //here we can just use the individual article variable from the forEach loop and print from there
+
+                    if(article.urlToImage !== null) {
+                      card.innerHTML = 
+                      `
+                          <img src="${article.urlToImage}">
+                          <a href="${article.url}" target="_blank"><h2>${article.title}</h2></a><br>
+                          <p>${article.description}</p>`;
+                      } else {
+                      card.innerHTML = `
+                      <img src="images/fallback.jpg">
+                          <a href="${article.url}" target="_blank"><h2>${article.title}</h2></a><br>
+                          <p>${article.description}</p>`;
+  
+                      }
+                   
                         resultsContainer.appendChild(card);
                         articlesShown++;
                 } else {
