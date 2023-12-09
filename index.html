@@ -2,22 +2,33 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta author = "Trent-Irvin">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel = "stylesheet" href = "styles.css">
+    <link rel = "stylesheet" href = "animations.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-.......(the integrity hash)......." crossorigin="anonymous">
-
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200&family=Open+Sans:wght@300;400&family=Playfair+Display&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Bitter&family=Montserrat:wght@100;200&family=Open+Sans:wght@300;400&family=Playfair+Display&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@700&display=swap" rel="stylesheet">
     <title>Read It</title>
 </head>
 <body>
     <section class = "top"> 
+<!----------------------------PERFORMANCE/BASIC TOGGLE---------------------------------------------------------------------->
+        <div class = "toggle-container">
+            <button class = "advanced fade-in">API Response</button>
+
+            <div class = "performance-window hidden"></div>
+
+        </div> 
         <!----------------------------------- Heading/Title of Project ----------------------------------------->
         <div class = "title">
             <h1 class = "read">Read It</h1>
+            <h1 class = "read-sub">get beyond the headline</h1>
+            
         </div>
         <!------------------------------------  Search Bar for articles ------------------------------------------>
         <article class = "bar-contianer">
@@ -29,27 +40,25 @@
                 </button>  
                 </div>
             </form>
-
-        <!----------------------------PERFORMANCE/BASIC TOGGLE---------------------------------------------------------------------->
-            <div class = "toggle-container">
-                <button class = "advanced">Performance</button>
-
-
-            </div> 
         </article>
-
     </section>
 
     <!-----------------------------------------ARTICLE RESULTS--------------------------------------------------------------------->
 
     <section class = "display">
+        <article class = "pages-wrapper"><div class = "show-pages">
+
+        </div>
+        </article>
 
         <article class = "results">
 
             
         </article>
     </section>
+
+    <footer></footer>
+    <script src ="news.js"></script>
 </body>
 
-<script src ="news.js"></script>
 </html>
