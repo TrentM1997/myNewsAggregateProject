@@ -45,7 +45,7 @@ function fetchSuggestions() {
                         `;
                     } else {
                     card.innerHTML = `
-                    <img src="images/fallback.jpg">
+                    <img src="images/icon.PNG">
                         <a href="${article.url}" target="_blank"><h2><span>${article.source.name}</span> - ${article.title}</h2></a><br>
                         `;
 
@@ -87,6 +87,7 @@ document.getElementById('searchForm').addEventListener('submit', function(event)
       return response.json();
     })
     .then(data => {
+        const totalResults = data.totalResults;
         const validFound = data.articles.filter(article => article.title !== "[Removed]");
         articlesData = validFound;
         console.log(articlesData.length);
@@ -100,12 +101,14 @@ document.getElementById('searchForm').addEventListener('submit', function(event)
     const window = document.createElement('div');
       window.classList.add('records');
       window.innerHTML = `
-      <h1>From News API</h1>
+      
       <p><span class = "record">Response Time: </span>${responseTime.toFixed(2)} m/s</p>
+      <p><span class = "record">Total Results: </span>${totalResults}</p>
       `;
       performanceWindow.appendChild(window);//Need to figure out why this continuously 
       renderArticles(currentPage);//paginated view
       renderButtons();
+      document.querySelector(pageButton).classList.add('active');
      
     })
     .catch(error => console.error("Error fetching data:", error));
@@ -128,7 +131,6 @@ function displayMetrics() {
 
 function renderArticles(page) {
     resultsContainer.innerHTML = "";
-   // renderButtons();
     const startIndex = (page - 1) * perPage;
     const endIndex = startIndex + perPage;
     const articlesToDisplay = articlesData.slice(startIndex, endIndex);
@@ -148,9 +150,9 @@ function renderArticles(page) {
                     `;
                 } else {
                 card.innerHTML = `
-                <img src="images/fallback.jpg">
+                <img src="images/icon.PNG">
                     <a href="${article.url}" target="_blank"><h2><span>${article.source.name}</span> - ${article.title}</h2></a><br>
-                    <p class = "source">${article.source.name}</p>`;
+                    `;
 
                 }
                   resultsContainer.appendChild(card);
@@ -168,6 +170,11 @@ function renderButtons() {
         const pageButton = document.createElement('li');
         pageButton.classList.add('next-btn');
         pageButton.textContent = i;
+        
+        if(i == 1) {
+
+            pageButton.classList.add('active');
+        }
 
         pageButton.addEventListener('click', (function (currentPage) {
             return function () {
