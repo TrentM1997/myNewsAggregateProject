@@ -16,35 +16,57 @@
     <title>Read It</title>
 </head>
 <body>
+
+    <section class = "menu">
+        <div class = "dropdown">
+            <button>About</button>
+        </div>
+        <div class = "dropdown">
+            <button>News API</button>
+            <div class = "dropdown-options">
+                <a href = "#">Documentation</a>
+                <a href = "#">Get API Key</a>
+            </div>
+        </div>
+        <div class = "dropdown">
+            <button>My Profile</button>
+            <div class = "dropdown-options">
+                <a href = "#">Bookmarks</a>
+                <a href = "#">History</a>
+                <a href = "#">Log out</a>
+                <a href = "#">Delete Account</a>
+            </div>
+        </div>
+        <div class = "dropdown">
+            <button>Sign In</button>
+            <div class = "dropdown-options">
+                <a href = "#">Sign In</a>
+                <a href = "#">Create Account</a>
+            </div>
+        </div>
+    </section>
     <section class = "top"> 
-<!----------------------------PERFORMANCE/BASIC TOGGLE---------------------------------------------------------------------->
-        <div class = "toggle-container">
-            <button class = "advanced fade-in">API Response</button>
-
-            <div class = "performance-window hidden"></div>
-
-        </div> 
-        <!----------------------------------- Heading/Title of Project ----------------------------------------->
         <div class = "title">
             <h1 class = "read">Read It</h1>
             <h1 class = "read-sub">get beyond the headline</h1>
-            
         </div>
-        <!------------------------------------  Search Bar for articles ------------------------------------------>
         <article class = "bar-contianer">
+            <div class = "toggle-container">
+                <button class = "advanced fade-in">API Response</button>
+                <div class = "performance-window hidden"></div>
+            </div>
+            <div class = "bar-wrapper">
             <form id = "searchForm">
                 <div class = "search-wrapper">
-                    <input id = "bar" type = "text" placeholder = "Search Articles...">
+                    <input id = "bar" type = "text" placeholder = "Search Articles..." autocomplete="off">
                 <button id = "search-btn" type = "submit">
                     <i id = "magnifyingGlass" class="fas fa-search"></i>
                 </button>  
                 </div>
             </form>
+        </div>
         </article>
     </section>
-
-    <!-----------------------------------------ARTICLE RESULTS--------------------------------------------------------------------->
-
     <section class = "display">
         <article class = "pages-wrapper"><div class = "show-pages">
 
@@ -69,6 +91,7 @@
             <a target = "_blank" href = "https://newsapi.org"><p>Documentation</p></a><br><br>
 
         </div>
+        
     </footer>
     <script src ="news.js"></script>
 </body>
